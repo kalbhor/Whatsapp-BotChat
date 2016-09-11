@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from os import system
+from os import path
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
@@ -9,7 +9,7 @@ print "Loading "
 driver_wa = webdriver.Chrome()
 driver_wa.get('https://web.whatsapp.com/')
 
-driver_bot = webdriver.PhantomJS()
+driver_bot = webdriver.PhantomJS(service_log_path=path.devnull)
 driver_bot.set_window_size(1280, 1024)
 driver_bot.get('http://www.cleverbot.com/')
 clever_bot = driver_bot.find_element_by_class_name('stimulus')
