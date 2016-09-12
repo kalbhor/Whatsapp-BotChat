@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from os import path
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from time import sleep
+from time import sleep,time
 
 print "Loading "
 
@@ -14,7 +14,7 @@ driver_bot.set_window_size(1280, 1024)
 driver_bot.get('http://www.cleverbot.com/')
 clever_bot = driver_bot.find_element_by_class_name('stimulus')
 
-raw_input('Ready? ') 
+raw_input("Ready?")
 
 driver_box = driver_wa.find_element_by_xpath('.//div[@class = "input"]')
 
@@ -23,7 +23,10 @@ pre_cont = ""
 cont = ""
 content = ""
 
-while(True):
+
+
+
+while content != "exit()":
 	url = driver_wa.page_source
 	soup = BeautifulSoup(url,"html.parser")
 	post_content = soup.findAll('span',{'class' : 'emojitext selectable-text'})
@@ -54,7 +57,9 @@ while(True):
 
 		
 
-	sleep(15)
+	sleep(10)
 
+driver_bot.quit()
+driver_wa.quit()
 
-
+print "\nEnded"
